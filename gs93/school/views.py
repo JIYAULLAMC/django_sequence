@@ -132,17 +132,29 @@ def home(request):
     # print("+++++++++++", students.query)
 
     # djnago  aggreegate functions
-    students = Student.objects.all()
-    avg = students.aggregate(Avg('marks'))
-    summ = students.aggregate(Sum('marks'))
-    maxx = students.aggregate(Max('marks'))
-    minn = students.aggregate(Min('marks'))
-    count = students.aggregate(Count('marks'))
-    print("avg--------", avg)
-    print("summ--------", summ)
-    print("maxx--------", maxx)
-    print("minn--------", minn)
-    print("count--------", count)
+    # students = Student.objects.all()
+    # avg = students.aggregate(Avg('marks'))
+    # summ = students.aggregate(Sum('marks'))
+    # maxx = students.aggregate(Max('marks'))
+    # minn = students.aggregate(Min('marks'))
+    # count = students.aggregate(Count('marks'))
+    # print("avg--------", avg)
+    # print("summ--------", summ)
+    # print("maxx--------", maxx)
+    # print("minn--------", minn)
+    # print("count--------", count)
+    # print("++++++++++++++++++",students)
+    # print("+++++++++++", students.query)
+
+    from django.db.models import Q
+
+    students = Student.objects.filter(Q(name="PPPP") & Q(roll=114))
+    students = Student.objects.filter(Q(name="PPPP") | Q(roll=116))
+    students = Student.objects.filter( ~Q(name="PPPP"))
+
+    students = Student.objects.all()[:]
+    students = Student.objects.all()[0:5]
+    students = Student.objects.all()[0:10:2]
     print("++++++++++++++++++",students)
     print("+++++++++++", students.query)
 
