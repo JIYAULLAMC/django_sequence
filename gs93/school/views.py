@@ -3,6 +3,7 @@ from school.models import Student, Teacher
 # Create your views here.
 import datetime
 from datetime import date, time
+from django.db.models import Avg, Min, Max, Count, Sum
 
 def home(request):
     # students_data = Student.objects.all()
@@ -129,6 +130,22 @@ def home(request):
     
     # print("++++++++++++++++++",students)
     # print("+++++++++++", students.query)
+
+    # djnago  aggreegate functions
+    students = Student.objects.all()
+    avg = students.aggregate(Avg('marks'))
+    summ = students.aggregate(Sum('marks'))
+    maxx = students.aggregate(Max('marks'))
+    minn = students.aggregate(Min('marks'))
+    count = students.aggregate(Count('marks'))
+    print("avg--------", avg)
+    print("summ--------", summ)
+    print("maxx--------", maxx)
+    print("minn--------", minn)
+    print("count--------", count)
+    print("++++++++++++++++++",students)
+    print("+++++++++++", students.query)
+
 
     return render(request, "school/home.html", {"student": students})
 
