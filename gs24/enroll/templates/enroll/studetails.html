@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th, td {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>student details page </h1>
+
+    {% if stu %}
+    <h2>Student data </h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Stu ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        {% for st in stu %}
+        <tr>
+            <td>{{st.id}}</td>
+            <td>{{st.stuid}}</td>
+            <td>{{st.stuname}}</td>
+            <td>{{st.stuemail}}</td>
+            <td>{{st.stupass}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+    <h2>No Data</h2>
+    {% endif %}
+    
+    <div>
+        <h3>custom ordering </h3>
+        <table>
+            {{form}}
+        </table>
+        <input type="submit" value="submit">
+    </div>
+
+    <div>
+        <h3>custom ordering </h3>
+        <table>
+            {{form}}
+        </table>
+        <input type="submit" value="submit">
+    </div>
+    <div>
+        <h3>custom form with destured fields </h3>
+            {% for field in form%}
+                <p>get the id for attribute in label tag  <strong>{{field.id_for_label}}</strong> </p> 
+                <p>get the field input <strong>{{field}}</strong> </p> 
+                <p>get the label tag input <strong>{{field.label_tag}}</strong> </p> 
+                <p>get the label input <strong>{{field.label}}</strong> </p> 
+                <p>get the value of the input <strong>{{field.value}}</strong> </p> 
+                <p>get the name of the input <strong>{{field.html_name}}</strong> </p> 
+                <p>get the help text <strong>{{field.help_text}}</strong> </p> 
+                <p>required <strong>{{field.field.required}}</strong> </p> 
+                <hr>
+            {% endfor %}
+            <br>
+        <input type="submit" value="submit">
+    </div>
+
+    <div>
+        <h2>how to render only visible fields </h2>
+        <table>
+            {% for field in form.visible_fields %}
+                {{field.label_tag}}
+                {{field}}
+                <br>
+            {% endfor %}
+        </table>
+        <input type="submit" value="submit">
+    </div>
+    <div>
+        <h2>how to render only hiden fields </h2>
+        <table>
+            {% for field in form.hidden_fields %}
+                {{field.label_tag}}
+                {{field}}
+                <br>
+            {% endfor %}
+        </table>
+        <input type="submit" value="submit">
+    </div>
+
+    <hr><hr><hr>
+    <div>
+        <h2>how to render only hiden fields </h2>
+        <table>
+           {{emp_form}}
+        </table>
+        <input type="submit" value="submit">
+    </div>
+    
+    
+</body>
+</html>

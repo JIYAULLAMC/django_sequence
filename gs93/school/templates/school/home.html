@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th, td {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>student  home details page </h1>
+
+    {% if students %}
+    <h2>Student data </h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>City</th>
+            <th>Marks</th>
+            <th>Pass Date</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.roll}}</td>
+            <td>{{student.city}}</td>
+            <td>{{student.marks}}</td>
+            <td>{{student.pass_date}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+    <h2>No Data</h2>
+    {% endif %}
+
+
+    <h2> <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.roll}}</td>
+        <td>{{student.city}}</td>
+        <td>{{student.marks}}</td>
+        <td>{{student.pass_date}}</td> 
+    </h2>
+    
+</body>
+</html>
