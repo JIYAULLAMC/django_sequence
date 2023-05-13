@@ -5,8 +5,8 @@ from school.models import Student, Book
 from  django.http import HttpResponse
 def home(request):
 
-    # res = Book.objects.all()
-    res = Book.books.all()
+    
+    res = Book.books.get_queryset()
     print("res-----------------", res)
 
     return HttpResponse("this is the message !")

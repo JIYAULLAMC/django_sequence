@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.query import QuerySet
 
 # Create your models here.
 
@@ -65,9 +66,23 @@ class Electronics(Product):
 
 
 
+
+
+class CustomManager(models.Manager):    
+
+    def get_queryset(self) -> QuerySet:
+        return super().get_queryset().order_by("book_price")
+    
+
 class Book(models.Model):
     book_name = models.CharField(max_length=30)
     book_price = models.IntegerField()
     book_pages = models.IntegerField()
 
-    books = models.Manager()
+    books = CustomManager()
+    # books = models.Manager()
+
+    def __str__(self):
+        return f"{self.book_name}_{self.book_price}_{self.book_pages}"
+
+
