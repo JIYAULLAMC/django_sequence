@@ -33,3 +33,14 @@ class Post(models.Model):
 
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=100)
+
+
+
+class Song(models.Model):
+    user = models.ManyToManyField(User)
+    name = models.CharField(max_length=20)
+    durantion = models.IntegerField()
+
+    def written_by(self):
+        print(self.user.all())
+        return ",".join([str(p) for p in self.user.all()])
