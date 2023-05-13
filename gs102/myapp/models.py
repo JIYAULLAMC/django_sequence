@@ -40,7 +40,9 @@ class Song(models.Model):
     user = models.ManyToManyField(User)
     name = models.CharField(max_length=20)
     durantion = models.IntegerField()
+    # temp_name = models.CharField(max_length=20, default=self.user)
 
     def written_by(self):
         print(self.user.all())
+
         return ",".join([str(p) for p in self.user.all()])
