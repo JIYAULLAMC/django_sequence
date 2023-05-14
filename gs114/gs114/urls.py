@@ -21,7 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("func/", views.myfunc, name="myfunc"),
     path("home/", views.TemplateView.as_view(template_name="school/home.html")),
-    path("myhome/", views.MyHome.as_view()),
+    path("myhome/", views.MyHome.as_view(extra_context={"cource":"Basic Python"})),
 
   
 ]
