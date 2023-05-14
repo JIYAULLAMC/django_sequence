@@ -10,11 +10,15 @@ def myfunc(request):
     return render(request, 'school/home.html')
 
 
-# rendering the templates in the django using class base views
+# rendering the templates including context
 class MyView(View):
 
     def get(self, request):
-        return render(request, 'school/home.html')
+        context = {
+            "name": "Mamtaj",
+            "age" : 45,
+        }
+        return render(request, 'school/home.html', context)
 
 
 
