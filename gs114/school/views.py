@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
@@ -11,6 +12,14 @@ def myfunc(request):
 
 class MyHome(TemplateView):
     template_name="school/home.html"
+
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['name'] = "jiya"
+        context['age'] = 12
+        # context = {"name" : "jiya", "age": 12}
+        return  context
 
 
 
