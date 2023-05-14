@@ -1,22 +1,20 @@
 from django.shortcuts import render
+from django.views import View
+from django.http import HttpResponse
 
 # Create your views here.
 
-from django.http import HttpResponse
 
+# rendering the templates in the django using function base views
 def myfunc(request):
-    return HttpResponse("<h1>function view</h1>")
+    return render(request, 'school/home.html')
 
-from django.views import View
 
+# rendering the templates in the django using class base views
 class MyView(View):
 
     def get(self, request):
-        return HttpResponse("<h1>class view</h1>")
+        return render(request, 'school/home.html')
 
-class MySubView(MyView):
 
-    def get(self, request):
-        print("mySubView------------------------")
-        return super().get(request)
 

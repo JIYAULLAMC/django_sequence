@@ -21,5 +21,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("func/", views.myfunc, name="myfunc"),
     path("cl/", views.MyView.as_view(), name="class"),    
-    path("subcl/", views.MySubView.as_view(), name="subclass"),    
 ]
