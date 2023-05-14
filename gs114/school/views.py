@@ -23,12 +23,13 @@ class MyView(View):
 
 
 class ContactView(View):
+    template_name = ""
 
     def get(self, request):
-        form = ContactForm
-        return render(request, "school/contact.html", {"form": form})
+        form = ContactForm()
+        return render(request, self.template_name , {"form": form})
     
-
+    
     def post(self, request):
         form = ContactForm(request.POST)
         if form.is_valid():
