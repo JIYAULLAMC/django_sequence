@@ -18,6 +18,9 @@ class MyHome(TemplateView):
         context = super().get_context_data(**kwargs)
         context['name'] = "jiya"
         context['age'] = 12
+        print("kwargs", kwargs)
+        context['id']= kwargs['id']
+        context['msg']= kwargs['msg']
         # context = {"name" : "jiya", "age": 12}
         return  context
 
