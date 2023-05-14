@@ -9,6 +9,10 @@ def myfunc(request):
     return render(request, 'school/home.html')
 
 
+class MyHome(TemplateView):
+    template_name="school/home.html"
+
+
 
 
 
