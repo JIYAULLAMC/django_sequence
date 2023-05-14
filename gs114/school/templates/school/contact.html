@@ -7,9 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Example for redering templates!</h2>
-    <h2>Name : {{name}} </h2>
-    <h2>Age : {{age}} </h2>
+
+    <h2>this is form</h2>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
 
 </body>
 </html>
