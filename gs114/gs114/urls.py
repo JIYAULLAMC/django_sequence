@@ -20,14 +20,7 @@ from school import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("func/", views.myfunc, name="myfunc"),
-    path("cl/", views.MyView.as_view(), name="class"),    
-    
-    # how to render the different templates using same view passing the template name in urls file
-    # path("func/", views.myfunc, {"template_name": "school/mycontact"}, name="myfunc"),
-    # path("func/", views.myfunc, {"template_name": "school/contact"}, name="myfunc"),
+    path("home/", views.TemplateView.as_view(template_name="school/home.html")),
 
-    # this is how to render the different templates which use same view
-
-    path("contact/", views.ContactView.as_view(template_name="school/contact.html"), name="contact"),    
-    path("mycontact/", views.ContactView.as_view(template_name="school/mycontact.html"), name="mycontact"),    
+  
 ]
