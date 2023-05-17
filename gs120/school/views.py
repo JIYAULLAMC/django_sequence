@@ -10,7 +10,7 @@ from school.models import Student
 class StudentList(ListView):
     model = Student
     context_object_name = "students"
-    ordering = "-id"
+    ordering = "-age"
 
 
     def get_queryset(self) -> QuerySet[Any]:
