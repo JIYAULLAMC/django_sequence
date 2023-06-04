@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Data : : {{ student.id }} / {{ student.name }} / {{ student.marks }} / {{ student.age }} </h2>
+
+    <div>
+        <table border="">
+            {% for object in students %}
+            <tr>
+                <td>
+                    <a href='{% url "studetail" object.id %}'> 
+                    <button style="width:70px"> {{ object.id }}  </button> 
+                </a>
+
+                </td>
+                <td>{{ object.name }} </td>
+                <td>{{ object.age }} </td>
+                <td>{{ object.marks }} </td>
+                <td>{{ object.city }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+</body>
+</html>

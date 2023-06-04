@@ -20,5 +20,6 @@ from school import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("stu/", views.StudentList.as_view(), name="stulist"),
-    
+    path("stu/<int:pk>/", views.StudentDetail.as_view(), name="studetail"),
+
 ]
