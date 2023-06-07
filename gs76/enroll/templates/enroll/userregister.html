@@ -5,10 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .success {
+            color: white;
+            background-color: green;
+        }
+        .error {
+            color: black;
+            background-color: red;
+
+        }
+        .info {
+            color: white;
+            background-color: blue;
+        }
+        .warning {
+            color: black;
+            background-color: yellow;
+        }
+
+
+    </style>
 </head>
 <body>
     
     <h2>this is the form </h2>
+    <div>
+        <h3>messages</h3>
+        <div>
+            {% for message in messages %}
+
+                <span class="{{ message.tags }}">
+                    {{ message }}
+                </span>
+            {% endfor %}
+        </div>
+    </div>
 
     <form action="" method="POST">
         {% csrf_token %}
