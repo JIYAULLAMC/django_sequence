@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
-
+from .forms import SignUpForm
+from django.contrib import messages
 # Create your views here.
 
 
 def sign_up(request):
     if request.method == "POST":
-        fm = UserCreationForm(request.POST)
+        fm = SignUpForm(request.POST)
         print("---------------")
         if fm.is_valid() :
             fm.save()
+            messages.success(request, 'your data created succeefully')
     else:
-        fm = UserCreationForm()    
+        fm = SignUpForm()    
     return render(request,"myapp/signup.html",{ "form" : fm})
 
