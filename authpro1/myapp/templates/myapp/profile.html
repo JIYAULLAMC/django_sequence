@@ -18,11 +18,25 @@
         <span class="{{ message.tags}}">{{ message.tags }} : {{ message }}</spanclass>
     {% endfor %}
     <br>
+    <div>
+        <form action="" method="post">
+            {% for err in form.non_field_errors %}
+                <span class="myerr">{{err}}</span>
+            {% endfor %}
+            {% csrf_token %}
+            {% for fm in form %}
+                {{ fm.label_tag }}{{fm}} {{fm.errors|striptags}} <br> <br>
+            {% endfor %}
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <br>
     <a href="{% url 'logout' %}">logout User</a>
     <br>
     <a href="{% url 'changepass' %}">Change password with old password  </a>
     <br>
     <a href="{% url 'changepass1' %}">Change password without old password  </a>
+
     
 </body>
 </html>
