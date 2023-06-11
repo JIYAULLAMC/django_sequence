@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .forms import SignUpForm, UserEditForm
+from .forms import SignUpForm, UserEditForm, AdminUserEditForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -47,12 +47,22 @@ def user_profile(request):
         # fm = UserChangeForm(instance=request.user)
         # custom user profile form
         if request.method == 'POST':
-            fm = UserEditForm(request.POST, instance=request.user)
+            if request.user.is_superuser:
+                # for super user
+                fm = AdminUserEditForm(request.POST, instance=request.user)
+            else:
+                # for normal user
+                fm = UserEditForm(request.POST, instance=request.user)
             if fm.is_valid():
                 fm.save()
                 messages.success(request, 'your profile updated successfully !!!!')
         else:
-            fm = UserEditForm(instance=request.user)
+            if request.user.is_superuser:
+                # for admin user
+                fm = AdminUserEditForm(instance=request.user)
+            else:
+                # for normal user
+                fm = UserEditForm(instance=request.user)
         return render(request, 'myapp/profile.html', {"name" :request.user, "form": fm})
     else:
         return HttpResponseRedirect('/login/')

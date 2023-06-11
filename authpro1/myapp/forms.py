@@ -13,10 +13,20 @@ class SignUpForm(UserCreationForm):
         labels = {'email' : "Enter Email Here !( label changed)"}
 
 
+# for normal user
 class UserEditForm(UserChangeForm):
     password = None
     class Meta:
         model = User
-        fields = ["username", "first_name", "last_name", "email", "is_active", "date_joined", 'last_login']
+        fields = ["username", "first_name", "last_name", "email"]
+        label = { "email" : "Email"}
 
+
+# for special admin user
+
+class AdminUserEditForm(UserChangeForm):
+    password = None
+    class Meta:
+        model = User
+        fields = "__all__"
         label = { "email" : "Email"}
