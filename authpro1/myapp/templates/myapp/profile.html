@@ -17,8 +17,12 @@
     {% for message in messages %}
         <span class="{{ message.tags}}">{{ message.tags }} : {{ message }}</spanclass>
     {% endfor %}
-
+    <br>
     <a href="{% url 'logout' %}">logout User</a>
+    <br>
+    <a href="{% url 'changepass' %}">Change password with old password  </a>
+    <br>
+    <a href="{% url 'changepass1' %}">Change password without old password  </a>
     
 </body>
 </html>

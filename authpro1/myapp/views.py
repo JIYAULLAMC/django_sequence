@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import SignUpForm
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 
 
 # sign up function base view
@@ -22,7 +22,6 @@ def sign_up(request):
 def user_login(request):
 
     if not request.user.is_authenticated : 
-
         if request.method == 'POST':
             fm = AuthenticationForm(request=request, data=request.POST)
             if fm.is_valid():
@@ -53,3 +52,49 @@ def user_profile(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/login/')
+
+
+# changing the password with old password
+
+def user_change_pass(request):
+    print("change pass -----------------")
+    if request.user.is_authenticated : 
+            
+        if request.method == 'POST':
+            fm = PasswordChangeForm(user=request.user, data=request.POST)
+            if fm.is_valid():
+                fm.save()
+                # to updated the session or not get logout automatically
+                update_session_auth_hash(request, request.user)
+                messages.success(request, 'your credentials are updated!!!')
+                return HttpResponseRedirect('/profile/')
+        else: 
+            fm = PasswordChangeForm(user=request.user)
+        
+        return render(request, 'myapp/changepass.html', {"form": fm})
+    else:
+        messages.success(request, 'you need to login first!!!')
+        return HttpResponseRedirect("/login/")
+
+
+# changing the password without old password
+
+def user_change_pass1(request):
+    print("change pass -----------------")
+    if request.user.is_authenticated : 
+            
+        if request.method == 'POST':
+            fm = SetPasswordForm(user=request.user, data=request.POST)
+            if fm.is_valid():
+                fm.save()
+                # to updated the session or not get logout automatically
+                update_session_auth_hash(request, request.user)
+                messages.success(request, 'your credentials are updated!!!')
+                return HttpResponseRedirect('/profile/')
+        else: 
+            fm = SetPasswordForm(user=request.user)
+        
+        return render(request, 'myapp/changepass1.html', {"form": fm})
+    else:
+        messages.success(request, 'you need to login first!!!')
+        return HttpResponseRedirect("/login/")
