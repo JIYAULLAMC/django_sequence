@@ -22,4 +22,7 @@ urlpatterns = [
     path("set/", views.set_cookie, name="setcookie"),
     path("get/", views.get_cookie, name="getcookie"),
     path("del/", views.del_cookie, name="delcookie"),
+    path("sets/", views.set_session, name="setsession"),
+    path("gets/", views.get_session, name="getsession"),
+    path("dels/", views.del_session, name="delsession"),
 ]

@@ -35,3 +35,32 @@ def del_cookie(request):
     response = render(request, 'student/setcookie.html')
     response.delete_cookie('name')
     return response
+
+
+# sessions ---------------
+
+
+
+
+def set_session(request):
+    print('-------used to set the session')
+    request.session['name'] = "vishwa"
+    request.session['lname'] = "vishwa"
+    request.session['fname'] = "vishwa"
+    return render(request, 'student/setsession.html')
+
+
+
+def get_session(request):
+    print("----------- used to get the session ")
+    # name = request.session['name']
+    name = request.session.get("name", "Guest")
+    return render(request, 'student/getcookie.html', { 'name':name})
+
+
+def del_session(request):
+    print("------------used to delet the session")
+    if 'name' in request.session:
+        del request.session['name']
+    return render(request, 'student/delsession.html')
+
