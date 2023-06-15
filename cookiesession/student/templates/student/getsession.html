@@ -8,6 +8,11 @@
 </head>
 <body>
     <h2>get session. {{name}}.....</h2>
+
+    <h3>{{ request.session.keys }}</h3>
+    {% for key in keys %}
+    <h3>key: {{ key }}</h3>
+    {% endfor %}
     
 </body>
 </html>
