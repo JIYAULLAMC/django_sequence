@@ -13,3 +13,7 @@ def home(request):
 @cache_page(30)
 def myhome(request):
     return render(request, 'enroll/mycourse.html')
+
+
+def temp(request):
+    return render(request, "enroll/temp.html")

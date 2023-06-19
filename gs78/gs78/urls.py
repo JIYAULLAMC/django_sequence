@@ -23,4 +23,7 @@ urlpatterns = [
     path("", cache_page(60)(views.home), name="home"),
     path("home/", views.home, name="home"),
     path("myhome/",views.myhome, name="myhome"),
+    
+    # making the templae segment as cache
+    path("temp/", views.temp, name="temp"),
 ]

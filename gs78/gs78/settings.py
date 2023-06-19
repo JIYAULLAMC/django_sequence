@@ -129,21 +129,21 @@ CACHE_MIDDLEWARE_SECONDS = 30
 
 # database storing cache 
 
-# CACHES = {
-#     'default' : {
-#         'BACKEND' : 'django.core.cache.backends.db.DatabaseCache',
-#         'LOCATION' : 'enroll_cache'
-#     }
-# }
+CACHES = {
+    'default' : {
+        'BACKEND' : 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION' : 'enroll_cache'
+    }
+}
 
 # file storing cache 
 
-CACHES = {
-    'default' : {
-        'BACKEND' : 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION' : r'C:\Users\JiyaUlla\Desktop\mydjango\gs78\cache',
-    }
-}
+# CACHES = {
+#     'default' : {
+#         'BACKEND' : 'django.core.cache.backends.filebased.FileBasedCache',
+#         'LOCATION' : r'C:\Users\JiyaUlla\Desktop\mydjango\gs78\cache',
+#     }
+# }
 
 
 # local memory cache  
