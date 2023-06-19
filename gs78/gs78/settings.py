@@ -129,12 +129,12 @@ CACHE_MIDDLEWARE_SECONDS = 30
 
 # database storing cache 
 
-# CACHES = {
-#     'default' : {
-#         'BACKEND' : 'django.core.cache.backends.db.DatabaseCache',
-#         'LOCATION' : 'enroll_cache'
-#     }
-# }
+CACHES = {
+    'default' : {
+        'BACKEND' : 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION' : 'enroll_cache'
+    }
+}
 
 # file storing cache 
 
@@ -148,9 +148,9 @@ CACHE_MIDDLEWARE_SECONDS = 30
 
 # local memory cache  
 
-CACHES = {
-    'default' : {
-        'BACKEND' : 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION' : 'unique-snowflake',
-    }
-}
+# CACHES = {
+#     'default' : {
+#         'BACKEND' : 'django.core.cache.backends.locmem.LocMemCache',
+#         'LOCATION' : 'unique-snowflake',
+#     }
+# }
