@@ -1,4 +1,4 @@
-"""gs78 URL Configuration
+"""djsignals URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,16 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from enroll import views
-from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", cache_page(60)(views.home), name="home"),
-    path("home/", views.home, name="home"),
-    path("myhome/",views.myhome, name="myhome"),
-    
-    # making the templae segment as cache
-    path("temp/", views.temp, name="temp"),
-    path("low/", views.low_level, name="low"),
 ]
