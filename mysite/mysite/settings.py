@@ -134,7 +134,7 @@ SHOW_ALL_API_DOCS = False
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': "drf_spectacular.openapi.AutoSchema",
+    'DEFAULT_SCHEMA_CLASS': "rest_framework.schemas.coreapi.AutoSchema",
 }
 
 SPECTACULAR_SETTINGS = {
